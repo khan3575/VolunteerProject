@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See All Events</title>
+    <div th:replace="~{header :: imports}"></div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .events-container {
+            max-height: 600px; /* Adjust height as needed */
+            overflow-y: auto;
+        }
+        .search-form {
+            margin-top: 50px;
+        }
+        .search-form .form-group {
+            margin-bottom: 20px;
+        }
+        .search-result {
+            margin-top: 20px;
+        }
+        .middle-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div th:replace="~{navigation :: navigation}"></div>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">See All Events</h2>
+    <!-- Search bar -->
+    <div class="row">
+        <div class="col-md-8 mx-auto search-form">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="bloodGroup" placeholder="Search events by blood group...">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Event cards will be dynamically added here -->
+    <div class="row">
+        <div class="col-md-8 mx-auto events-container">
+            <div th:each="event : ${eventList}">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${event.title}">Event Title</h5>
+                        <p class="card-text">Date: <span th:text="${event.date}">January 1, 2025</span></p>
+                        <p class="card-text">Location: <span th:text="${event.location}">Example Location</span></p>
+                        <p class="card-text">Contact: <span th:text="${event.contactName}">John Doe</span> (<span th:text="${event.contactPhone}">123-456-7890</span>)</p>
+                        <!-- You can add more details here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above card structure for each event -->
+        </div>
+    </div>
+</div>
+<div class="middle-container" id="searchForm">
+    <h3 class="text-center mb-4">Search Eligible Donors</h3>
+    <form>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location" placeholder="Enter location">
+        </div>
+        <div class="form-group">
+            <label for="reason">Reason</label>
+            <input type="text" class="form-control" id="reason" placeholder="Enter reason">
+        </div>
+        <div class="form-group">
+            <label for="neededDate">When will it be needed?</label>
+            <input type="date" class="form-control" id="neededDate">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Search</button>
+    </form>
+    <div id="eligibleDonorsList" class="mt-4">
+        <!-- Eligible donors list will be displayed here -->
+    </div>
+</div>
+<div class="search-result text-center mt-4">
+    <h3>Search Result</h3>
+    <div id="searchResult">
+        <!-- Search result will be displayed here -->
+    </div>
+</div>
+<div th:replace="~{footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#searchButton').click(function() {
+            var bloodGroup = $('#bloodGroup').val();
+            if (bloodGroup === 'AB+' || bloodGroup === 'AB-' || bloodGroup === 'A+' || bloodGroup === 'A-' || bloodGroup === 'B+' || bloodGroup === 'B-' || bloodGroup === 'O+' || bloodGroup === 'O-') {
+                $('#searchForm').show();
+            } else {
+                alert('Please enter a valid blood group (e.g., AB+, AB-, A+, A-, B+, B-, O+, O-)');
+            }
+        });
+
+        $('#searchForm form').submit(function(e) {
+            e.preventDefault();
+            var location = $('#location').val();
+            var reason = $('#reason').val();
+            var neededDate = $('#neededDate').val();
+            // Hide the search form
+            $('#searchForm').hide();
+            // Display search result
+            $('#searchResult').html('<p>Search Result:</p><p>Location: ' + location + '</p><p>Reason: ' + reason + '</p><p>Needed Date: ' + neededDate + '</p>');
+            // Perform search based on location, reason, and neededDate
+            // Display eligible donors list in the middle-container
+            $('#eligibleDonorsList').html('<h4 class="text-center">Eligible Donors List</h4><p class="text-center">List of eligible donors will be displayed here...</p>');
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See All Events</title>
+    <div th:replace="~{header :: imports}"></div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div th:replace="~{navigation :: navigation}"></div>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">See All Events</h2>
+    <!-- Search bar -->
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search events...">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Event cards will be dynamically added here -->
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Event Title</h5>
+                    <p class="card-text">Date: January 1, 2025</p>
+                    <p class="card-text">Location: Example Location</p>
+                    <p class="card-text">Contact: John Doe (123-456-7890)</p>
+                    <!-- You can add more details here -->
+                </div>
+            </div>
+            <!-- Repeat the above card structure for each event -->
+        </div>
+    </div>
+</div>
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>

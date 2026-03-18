@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event - Volunteer Network</title>
+    <div th:replace="~{header :: imports}"></div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom Styles */
+        .event-options {
+            margin-top: 50px;
+        }
+        .event-options .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div th:replace="~{navigation :: navigation}"></div>
+
+<div class="container event-options">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">See Events</h5>
+                    <p class="card-text">View the latest events happening in your area.</p>
+                    <a th:href="@{/event/seeEvent}" class="btn btn-primary">See On Going Events</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Post Events</h5>
+                    <p class="card-text">Post a new event and share it with the community.</p>
+                    <a th:href="@{/event/postEvent}" class="btn btn-primary">Post Event</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">All Events</h5>
+                    <p class="card-text">Browse through all the events listed on our platform.</p>
+                    <a th:href="@{#}" class="btn btn-primary">All Events</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{footer :: footer}"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

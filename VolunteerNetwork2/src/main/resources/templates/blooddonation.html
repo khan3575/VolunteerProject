@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .search-bar {
+            display: none;
+        }
+    </style>
+    <div th:replace="~{header :: imports}"></div>
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div th:replace="~{navigation :: navigation}"></div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Sidebar with options -->
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active">Blood Donation</a>
+                <a href="/donations/donateBlood/requestBlood" class="list-group-item list-group-item-action" >Search for Blood</a>
+
+            </div>
+            <!-- Search bar -->
+            <div class="search-bar mt-3">
+                <input type="text" class="form-control" placeholder="Enter blood type...">
+                <!-- Here you can show search results dynamically using JavaScript -->
+            </div>
+        </div>
+        <div class="col-md-9">
+            <!-- List of blood donation requests -->
+            <h2 class="mb-4">Blood Donation Requests</h2>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">User 1</h5>
+                    <p class="card-text" style=" margin-bottom: 50px;">Phone Number: 1234567890</p>
+                </div>
+            </div>
+            <!-- Repeat the above card structure for more donation requests -->
+        </div>
+    </div>
+</div>
+<script>
+    function showSearchBar() {
+        var searchBar = document.querySelector('.search-bar');
+        if (searchBar.style.display === 'none') {
+            searchBar.style.display = 'block';
+        } else {
+            searchBar.style.display = 'none';
+        }
+    }
+</script>
+
+<div th:replace="~{footer :: footer}"></div>
+</body>
+</html>

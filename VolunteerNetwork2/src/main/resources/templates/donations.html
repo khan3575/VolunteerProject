@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donations - Volunteer Network</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add your custom styles here */
+        .list-group-item {
+            font-size: 1.5em; /* Make list items 1.5 times larger */
+        }
+        .list-group-item:last-child {
+            margin-bottom: 50px; /* Add white gap under the last option */
+        }
+    </style>
+    <div th:replace="~{header :: imports}"></div>
+</head>
+<body>
+<div th:replace="~{header :: header}"></div>
+<div th:replace="~{navigation :: navigation}"></div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Make a Donation</h2>
+            <p>Select one of the options below to contribute to our network:</p>
+            <div class="list-group">
+                <a th:href="@{/donations/donateBlood}" class="list-group-item list-group-item-action">Donate Blood</a>
+                <a th:href="@{/donations/donateMoney}" class="list-group-item list-group-item-action">Donate Money</a>
+                <a th:href="@{/donations/donateItems}" class="list-group-item list-group-item-action">Donate Items</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{footer :: footer}"></div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
